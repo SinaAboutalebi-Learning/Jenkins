@@ -107,3 +107,48 @@ Once the pipeline runs, you will see the output in the build logs, displaying th
 ![Console Output](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/ConsoleOutput.png?raw=true)
 
 Using build environment variables enhances the flexibility and automation capabilities of your Jenkins pipelines, allowing you to dynamically adapt your pipeline behavior based on the context of each build.
+
+
+## Understanding Workspace in Jenkins Pipelines 📁
+
+In Jenkins pipelines, the workspace directory is a designated location where Jenkins stores files related to the current build. It serves as the working directory for all build steps and provides a clean environment for performing build tasks.
+
+Here's how you can utilize the workspace directory in your Jenkins pipeline:
+
+1. **Accessing Workspace**: Within your pipeline script, you can reference the workspace directory using the `WORKSPACE` environment variable. For example, `${WORKSPACE}/src` refers to the `src` directory within the workspace.
+
+2. **Manipulating Files in Workspace**: You can perform various file operations, such as creating files, within the workspace directory. These operations ensure that your build artifacts are stored in a centralized location.
+
+Let's demonstrate how to add a step to manipulate files in the workspace:
+
+1. **Navigate to Pipeline Configuration**: Open your pipeline configuration by clicking on the pipeline name and then selecting "Configure" from the left menu.
+
+2. **Add Build Step**: In the build section, add an "Execute shell" build step by clicking on "Add build step" and selecting "Execute shell" from the dropdown.
+
+3. **Manipulate Files**: In the script area, enter commands to manipulate files in the workspace directory. For example, you can echo something to a file and then list the contents of the workspace. Here's an example:
+    ```bash
+    # Echo "Hello, Jenkins!" to a file named "message.txt" in the workspace
+    echo "Hello, Jenkins!" > ${WORKSPACE}/message.txt
+    
+    # List the contents of the workspace
+    ls ${WORKSPACE}
+    ```
+
+    ![Build Step 3](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/BuildStep3.png?raw=true)
+
+4. **Save Configuration**: Save the pipeline configuration to apply the changes.
+
+5. **Run Pipeline**: Once the configuration is saved, trigger the pipeline execution by clicking on "Build Now".
+
+After the pipeline execution completes, you can view the contents of the workspace directory and see the manipulated files.
+
+![Console Output 2](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/ConsoleOutput2.png?raw=true)
+
+### Viewing Workspace in Pipeline Menu
+
+After running the pipeline, you can view the workspace directory in the pipeline menu. Simply click on the pipeline job name, and you'll find the "Workspace" link in the left menu. Clicking on this link will take you to the workspace directory for the specific build, where you can explore the files generated during the build process.
+
+![WorkSpace View](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/WorkSpace.png?raw=true)
+
+Understanding and utilizing the workspace directory effectively allows you to organize build artifacts and perform build tasks efficiently in Jenkins pipelines.
+
