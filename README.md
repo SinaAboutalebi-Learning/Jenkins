@@ -152,3 +152,34 @@ After running the pipeline, you can view the workspace directory in the pipeline
 
 Understanding and utilizing the workspace directory effectively allows you to organize build artifacts and perform build tasks efficiently in Jenkins pipelines.
 
+
+## Exploring Jenkins File System 📁
+
+Jenkins provides a file system within its Docker container where various configurations, jobs, and workspace directories are stored. Here's how you can explore the Jenkins file system:
+
+1. **Connect to Jenkins Docker Container**: Open your terminal and run the following command to connect to the Jenkins Docker container and get a bash command-line interface inside the container:
+   ```bash
+   docker exec -it jenkins bash
+   ```
+2. **Navigate to Jenkins Home Directory**: Once you're inside the container's bash interface, use the cd command to navigate to the Jenkins home directory:
+    ```bash
+    cd /var/jenkins_home
+    ```
+3. **List Directory Contents**: Run the `ls` command to view the contents of the Jenkins home directory. You'll see various directories and files related to Jenkins configurations and jobs.
+
+4. **Explore Workspace Directory**: One important directory within Jenkins is the workspace directory, where build-related files and artifacts are stored. Navigate to the workspace directory using the following command:
+    ```bash
+    cd workspace
+    ```
+5. **List Pipeline Directory**: Within the workspace directory, you'll find directories named after your pipeline jobs. Navigate into the directory corresponding to your pipeline job using the `cd` command.
+
+6. **View Contents**: Once inside the pipeline directory, run the `ls` command to view its contents. You'll typically find build artifacts, logs, and any files generated during the build process.
+
+7. **View File Content**: If you've created files as part of your pipeline job, you can use the `cat` command to view their contents. For example, to view the content of a file named `message.txt`, run:
+    ```bash
+    cat message.txt
+    ```
+
+    ![Jenkins Terminal](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/jenkinsTerminal.png?raw=true)
+
+Exploring the Jenkins file system gives you insight into where Jenkins stores its data and how pipelines interact with the workspace directory.
