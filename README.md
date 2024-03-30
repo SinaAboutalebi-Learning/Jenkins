@@ -62,3 +62,34 @@ In this section, we'll guide you through creating your first pipeline in Jenkins
 7. **Save and Build**: Once you've configured your pipeline settings, click "Save" to save the configuration. Then, click on "Build Now" to trigger the first build of your pipeline.
 
 Congratulations! 🎉 You've successfully created and executed your first Jenkins pipeline. You should see the build status and output in the Jenkins dashboard.
+
+
+## Using Build Environment Variables 💡
+
+Jenkins provides a set of build environment variables that you can use within your pipeline scripts to access information about the current build. These variables can be particularly useful for tasks like versioning, tagging Docker images, or generating reports.
+
+Here are some commonly used build environment variables:
+
+- **BUILD_ID**: The ID number of the current build.
+- **BUILD_URL**: The URL of the current build on the Jenkins server.
+- **JOB_NAME**: The name of the job being executed.
+- **BUILD_NUMBER**: The current build number, which increments with each new build.
+- **WORKSPACE**: The absolute path of the workspace directory for the current build.
+
+To use these variables in your Jenkins pipeline, you can reference them within your build steps. Let's demonstrate how to use `BUILD_ID` and `BUILD_URL` in our pipeline:
+
+1. **Navigate to Pipeline Configuration**: Open your pipeline configuration by clicking on the pipeline name and then selecting "Configure" from the left menu.
+
+2. **Add Build Step**: In the build section, add an "Execute shell" build step by clicking on "Add build step" and selecting "Execute shell" from the dropdown.
+
+3. **Use Build Environment Variables**: In the script area, enter the following commands to print the build ID and build URL:
+    ```bash
+    echo "The Build ID of this job is ${BUILD_ID}"
+    echo "The Build URL of this job is ${BUILD_URL}"
+    ```
+
+4. **Save and Run Pipeline**: Save the pipeline configuration and click on "Build Now" to trigger the pipeline execution.
+
+Once the pipeline runs, you will see the output in the build logs, displaying the build ID and build URL.
+
+Using build environment variables enhances the flexibility and automation capabilities of your Jenkins pipelines, allowing you to dynamically adapt your pipeline behavior based on the context of each build.
