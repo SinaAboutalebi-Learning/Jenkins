@@ -39,16 +39,22 @@ To get started with Jenkins, follow these simple steps:
 In this section, we'll guide you through creating your first pipeline in Jenkins using the web interface:
 
 1. **Navigate to New Item**: On the left menu of the Jenkins dashboard, click on "New Item".
+   
+   ![New Item](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/NewItem.png?raw=true)
 
-2. **Name Your Pipeline**: Enter a name for your pipeline, then select "Freestyle project" as the project type. For now, we'll start with a simple freestyle project.
+3. **Name Your Pipeline**: Enter a name for your pipeline, then select "Freestyle project" as the project type. For now, we'll start with a simple freestyle project.
 
-3. **Configure Source Control Management (SCM)**: Under the "Source Control Management" section, choose "Git" and provide the repository URL. Make sure to change the default branch specifier from "*/master" to "*/main" if your repository uses the main branch as the default.
+   ![New Pipe Line](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/NamePipeline.png?raw=true)
 
-4. **Build Triggers**: Due to potential difficulties with configuring GitHub webhooks for Jenkins behind a NAT or firewall, we'll opt for the "Poll SCM" option instead. This method periodically checks the source code repository for changes, similar to a cron job, ensuring that Jenkins can detect and trigger builds even in restrictive network environments.
+5. **Configure Source Control Management (SCM)**: Under the "Source Control Management" section, choose "Git" and provide the repository URL. Make sure to change the default branch specifier from "*/master" to "*/main" if your repository uses the main branch as the default.
 
-5. **Build Environment**: Consider enabling "Delete workspace before build starts" to ensure a clean build environment for each execution.
+![SCM](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/SCM.png?raw=true)
 
-6. **Build and Post-Build Actions**:
+6. **Build Triggers**: Due to potential difficulties with configuring GitHub webhooks for Jenkins behind a NAT or firewall, we'll opt for the "Poll SCM" option instead. This method periodically checks the source code repository for changes, similar to a cron job, ensuring that Jenkins can detect and trigger builds even in restrictive network environments.
+
+7. **Build Environment**: Consider enabling "Delete workspace before build starts" to ensure a clean build environment for each execution.
+
+8. **Build and Post-Build Actions**:
     - **Build Steps**: Here's where you define the actual build process. Click on "Add build step" and select the appropriate build step according to your project requirements. For example:
         - **Execute Shell**: If your project requires running shell commands, select this option and input the commands you want to execute. For example, `npm install` to install dependencies or `mvn clean install` to build a Maven project.
         - **Invoke Gradle script**: If your project is a Gradle-based project, use this option to invoke Gradle commands such as `gradle build`.
@@ -59,7 +65,9 @@ In this section, we'll guide you through creating your first pipeline in Jenkins
         - **Archive the artifacts**: Use this option to archive build artifacts such as JAR files, WAR files, etc., for later reference.
         - **Email Notification**: Configure Jenkins to send email notifications upon build completion, success, failure, etc.
 
-7. **Save and Build**: Once you've configured your pipeline settings, click "Save" to save the configuration. Then, click on "Build Now" to trigger the first build of your pipeline.
+    ![Build Step 1](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/BuildStep1.png?raw=true)
+
+9. **Save and Build**: Once you've configured your pipeline settings, click "Save" to save the configuration. Then, click on "Build Now" to trigger the first build of your pipeline.
 
 Congratulations! 🎉 You've successfully created and executed your first Jenkins pipeline. You should see the build status and output in the Jenkins dashboard.
 
@@ -80,16 +88,22 @@ To use these variables in your Jenkins pipeline, you can reference them within y
 
 1. **Navigate to Pipeline Configuration**: Open your pipeline configuration by clicking on the pipeline name and then selecting "Configure" from the left menu.
 
-2. **Add Build Step**: In the build section, add an "Execute shell" build step by clicking on "Add build step" and selecting "Execute shell" from the dropdown.
+   ![Pipeline Configuration](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/PipeLineMenu.png?raw=true)
 
-3. **Use Build Environment Variables**: In the script area, enter the following commands to print the build ID and build URL:
+3. **Add Build Step**: In the build section, add an "Execute shell" build step by clicking on "Add build step" and selecting "Execute shell" from the dropdown.
+
+4. **Use Build Environment Variables**: In the script area, enter the following commands to print the build ID and build URL:
     ```bash
     echo "The Build ID of this job is ${BUILD_ID}"
     echo "The Build URL of this job is ${BUILD_URL}"
     ```
 
-4. **Save and Run Pipeline**: Save the pipeline configuration and click on "Build Now" to trigger the pipeline execution.
+    ![Build Step 2](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/BuildStep2.png?raw=true)
+
+5. **Save and Run Pipeline**: Save the pipeline configuration and click on "Build Now" to trigger the pipeline execution.
 
 Once the pipeline runs, you will see the output in the build logs, displaying the build ID and build URL.
+
+![Console Output](https://github.com/SinaAboutalebi-Learning/Jenkins/blob/main/images/ConsoleOutput.png?raw=true)
 
 Using build environment variables enhances the flexibility and automation capabilities of your Jenkins pipelines, allowing you to dynamically adapt your pipeline behavior based on the context of each build.
