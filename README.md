@@ -49,8 +49,15 @@ In this section, we'll guide you through creating your first pipeline in Jenkins
 5. **Build Environment**: Consider enabling "Delete workspace before build starts" to ensure a clean build environment for each execution.
 
 6. **Build and Post-Build Actions**:
-    - **Build**: For our first build step, let's use a simple shell command. Select "Execute shell" from the list of build steps and enter the command `echo "Hello World"`. This will output "Hello World" when the build is executed.
-    - **Post-Build**: You can add post-build actions such as sending an email notification upon build completion. For simplicity, we'll skip this step for now.
+    - **Build Steps**: Here's where you define the actual build process. Click on "Add build step" and select the appropriate build step according to your project requirements. For example:
+        - **Execute Shell**: If your project requires running shell commands, select this option and input the commands you want to execute. For example, `npm install` to install dependencies or `mvn clean install` to build a Maven project.
+        - **Invoke Gradle script**: If your project is a Gradle-based project, use this option to invoke Gradle commands such as `gradle build`.
+        - **Invoke Ant**: If your project uses Ant for building, use this option to invoke Ant targets.
+        - **Invoke Python script**: If your project involves Python scripts, use this option to execute Python scripts.
+        - **Windows Batch Command**: For Windows-based projects, use this option to execute batch commands.
+    - **Post-Build Actions**: You can configure actions to be performed after the build is completed. This can include archiving artifacts, triggering other builds, sending notifications, etc. For example:
+        - **Archive the artifacts**: Use this option to archive build artifacts such as JAR files, WAR files, etc., for later reference.
+        - **Email Notification**: Configure Jenkins to send email notifications upon build completion, success, failure, etc.
 
 7. **Save and Build**: Once you've configured your pipeline settings, click "Save" to save the configuration. Then, click on "Build Now" to trigger the first build of your pipeline.
 
